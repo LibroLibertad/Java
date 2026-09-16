@@ -1,0 +1,54 @@
+public class AlterImage {
+	/**
+	 * Converts 3 arrays of color values into one array
+	 * of Pixel objects
+	 * 
+	 * @param reds the red color values
+	 * @param greens the green color values
+	 * @param blues the blue color values
+	 * @return the Pixel array generated with information
+	 * 		   in the red, green and blue arrays
+	 * 
+	 * Precondition:  The three color arrays are all the same
+	 * 				  size and contain int values in the range 0-255.
+	 * Postcondition: The returned array is the same size as the
+	 * 				  3 color arrays.
+	 */
+	public Pixel[][] generatePixelArray(int[][] reds, int[][] greens, int[][] blues)
+	{
+		Pixel[][] pixel = new Pixel[255][255];
+		for(int row = 0; row < 255; row++) {
+			for(int col = 0; col < 255; col++) {
+				pixel[row][col] = new Pixel(reds[row][col], greens[row][col], blues[row][col]);
+			}
+		}
+		return pixel;
+	}
+	
+	/**
+	 * Flips a 2D array of Pixel objects either
+	 * horizontally or vertically
+	 * 
+	 * @param image the 2D array of Pixel objects to be processed
+	 * @param horiz true: flip horizontally, false: flip vertically
+	 * @return the processed image
+	 */
+	public Pixel[][] flipImage(Pixel[][] image, boolean horiz)
+	{
+		Pixel[][] flipped = new Pixel[255][255];
+		for(int row = 0; row < 255; row++) {
+			for(int col = 0; col < 255; col++) {
+				if(horiz) {
+					flipped[row][col] = image[254 - row][col];
+				}
+				else {
+					flipped[row][col] = image[row][254 - col];
+				}
+			}
+		}
+		return flipped;
+	}
+	
+	/* Additional implementation not shown */
+	
+}
