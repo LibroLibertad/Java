@@ -1,5 +1,3 @@
-package ap2007pkg;
-
 public class SelfDivisor {
 	
 	public static boolean isSelfDivisor(int num) {
