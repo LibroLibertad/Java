@@ -1,0 +1,55 @@
+package ap2023pkg;
+
+public class AppointmentBook {
+	private int[][] period;
+	
+	public AppointmentBook() {
+		period = new int[8][60];
+		for(int row = 0; row < 8; row++) {
+			for(int col = 0; col < 60; col++) {
+				
+				
+				
+			}
+		}
+	}
+	
+	private boolean isMinuteFree (int period, int minute) {
+		//return false;
+		/**
+		 * returns true if for period in the day, at minute, there is no
+		 * other appointment scheduled; false otherwise
+		 */
+		return this.period[period-1][minute] == 0;
+	}
+	
+	private void reserveBlock(int period, int startMinute, int duration) {
+		/*
+		 * during the specified period, the startMinute of the period
+		 * and duration are reserved and made unavailable for other
+		 * appointments. 
+		 * Change the period two-dimensional array so that value is 1 for a
+		 * minutes that is scheduled.
+		 */
+		for(int m = 0; m < duration; m++) {
+			this.period[period-1][m+startMinute] = 1;
+		}
+	}
+	
+	public int findFreeBlock(int period, int duration) {
+		int[] block = this.period[period-1];
+		for(int min=0; min < 60; min++) {
+			if(!isMinuteFree(period,duration)) {
+				
+			}
+		}
+		return -1;
+	}
+	
+	public boolean makeAppointment(int startPeriod, int endPeriod, int duration) {
+		//return false;
+		for(int p = startPeriod; p < endPeriod; p++) {
+			
+		}
+	}
+}
