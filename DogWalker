@@ -1,0 +1,43 @@
+public class DogWalker {
+	private int maxDogs;
+	private DogWalkCompany company;
+	
+	public DogWalker(int max, DogWalkCompany company) {
+		maxDogs = max;
+		this.company = company;
+	}
+	
+	public int getMaxDogs() { return maxDogs; }
+	
+	public DogWalkCompany getCompany() { return company; }
+	/**
+	 * Takes at least one dog for a walk during the time specified
+	 * by hour, as described in part (a)
+	 * Precondition: 0 <= hour <= 23, maxDogs > 0
+	 * @param hour The hour of the day to walk dogs
+	 * @return the number of dogs this dog walker walks during the time
+	 * 			specified by hour
+	 */
+	public int walkDogs(int hour) {
+		int a = Math.min(company.numAvailableDogs(hour), maxDogs);
+		company.updateDogs(hour, a);
+		return a;
+	}
+	/**
+	 * Performs an entire dog-walking shift and returns the amount
+	 * earned, in dollars, as described in part (b)
+	 * Precondition: 0 <= startHour <= endHour <= 23, maxDogs > 0
+	 * @param startHour the starting hour of the shift
+	 * @param endHour the ending hour of the shift
+	 * @return the amount of dollars earned for walking the dogs
+	 */
+	public int dogWalkShift(int startHour, int endHour) {
+		int earned = 0;
+		for(int n = startHour; n <= endHour; n++) {
+			earned += 5 * walkDogs(n);
+			if((walkDogs(n) == maxDogs) || (n >= 9 && n <= 17))
+				earned += 3;
+		}
+		return earned;
+	}
+}
