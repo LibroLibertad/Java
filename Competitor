@@ -1,0 +1,45 @@
+public class Competitor implements Comparable<Competitor> {
+	private String name;
+	private int rank;
+	/**
+	 * Constructor
+	 * @param name The name of the competitor
+	 * @param rank The rank of the competitor
+	 */
+	public Competitor(String name, int rank) {
+		this.name = name;
+		this.rank = rank;
+	}
+	/**
+	 * 
+	 * @return The name of the competitor
+	 */
+	public String getName() { return name; }
+	/**
+	 * 
+	 * @return The rank of the competitor
+	 */
+	public int getRank() { return rank; }
+	
+	public String toString() {
+		return "[name: " + name + ", rank: " + rank + "]";
+	}
+	/**
+	 * @param other The other Competitor to compare to the current
+	 * @return a positive number if the current competitor is ranked higher (lower rank value) than the parameter; 
+	 *         a negative number of the current competitor is ranked lower (higher rank value) than the parameter;
+	 *         zero if the two Competitors have the same rank
+	 */
+	public int compareTo(Competitor other) {
+		return other.getRank() - rank;
+	}
+	/**
+	 * Mutator: Changes the current rank if the competitor wins a match and earns a better rank
+	 * @param newRank the new rank to award the competitor
+	 */
+	public void setRank(int newRank) {
+		this.rank = newRank;
+	}
+	
+	
+}
