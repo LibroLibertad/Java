@@ -1,0 +1,67 @@
+package ap2007pkg;
+
+public class SelfDivisor {
+	
+	public static boolean isSelfDivisor(int num) {
+		int saveNum = num;
+		// iterative:
+		while(num > 0) {
+			if (num % 10 != 0) {
+				if (saveNum % (num%10) != 0) {
+					return false;
+				}
+				else num /= 10;
+			}
+			else return false;
+		}
+		return true;
+		
+		/*
+		if(num == 0) {
+			return true;
+		}
+		else {
+			if (num % 10 == 0) return false;
+			else return (num % (num%10) == 0) && isSelfDivisor(num/10);
+		}
+		*/
+	}
+	
+	public static int[] firstNumDivisors(int start, int num) {
+		int[] selfDivisors = new int[num];
+		int startNum = start;
+		int index = 0;
+		while (index < num) {
+			if(isSelfDivisor(startNum)) {
+				System.out.println(startNum);
+				selfDivisors[index] = startNum;
+				index++;
+				startNum++;
+			}
+			else {
+				startNum++;
+			}
+		}
+		return selfDivisors;
+	}
+	
+	public static void printArray(int[] arr) {
+		for(int n = 0; n < arr.length - 1; n++) {
+			System.out.print(arr[n] + ", ");
+		}
+		System.out.println(arr[arr.length-1]);
+	}
+	
+	public static void main(String[] args) {
+		int[] example = firstNumDivisors(10, 10);
+		printArray(example);
+		/*
+		int[] nums= new int[] {9, 16, 20, 24, 111, 101, 110, 987654321};
+		for(int n = 0; n < nums.length; n++) {
+			if(isSelfDivisor(nums[n])) {
+				System.out.println(nums[n] + " is a self divisor.");
+			}
+		}
+		*/
+	}
+}
