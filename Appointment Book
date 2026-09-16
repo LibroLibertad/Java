@@ -1,5 +1,3 @@
-package ap2023pkg;
-
 public class AppointmentBook {
 	private int[][] period;
 	
